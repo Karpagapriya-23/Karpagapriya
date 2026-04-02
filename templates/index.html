@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uber Customer Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>🚗Uber Customer Management</h1>
+
+    <div class="form-box">
+        <h2>priya's Customer</h2>
+        <form action="/add" method="post">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="mobile" placeholder="Mobile" required>
+            <input type="number" name="amount" placeholder="Travel Fare" required>
+            <input type="text" name="location" placeholder="Location" required>
+            <button type="submit">Add Customer</button>
+        </form>
+    </div>
+
+    <h2>Customer Records</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Amount</th>
+            <th>Location</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for c in customers %}
+        <tr>
+            <td>{{ c.name }}</td>
+            <td>{{ c.mobile }}</td>
+            <td>{{ c.amount }}</td>
+            <td>{{ c.location }}</td>
+            <td>
+                <a class="edit" href="/edit/{{ c.mobile }}">Edit</a>
+                <a class="delete" href="/delete/{{ c.mobile }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+
+</body>
+</html>

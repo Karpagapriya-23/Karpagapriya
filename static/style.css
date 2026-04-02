@@ -1,0 +1,207 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY - 3D MAP BACKGROUND */
+body {
+    font-family: 'Poppins', sans-serif;
+
+    background: 
+        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
+        url("../images/map-bg.jpg"); /* your 3D map image */
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* 🚗 ADD CAR IMAGE (ONLY NEW PART) */
+body::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+    width: 420px;
+    height: 250px;
+
+    background: url("../images/blue-car.png") no-repeat;
+    background-size: contain;
+    background-position: bottom right;
+
+    opacity: 0.9;
+
+    animation: carFloat 6s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* 🚗 FLOAT ANIMATION */
+@keyframes carFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* NEON OVERLAY GLOW */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(0, 191, 255, 0.08), transparent 70%);
+    animation: neonMove 10s linear infinite;
+    z-index: 0;
+}
+
+@keyframes neonMove {
+    0% { transform: translate(-20%, -20%); }
+    50% { transform: translate(20%, 20%); }
+    100% { transform: translate(-20%, -20%); }
+}
+
+/* MAIN CONTAINER */
+.container {
+    position: relative;
+    z-index: 1;
+
+    width: 85%;
+    margin: auto;
+    margin-top: 40px;
+
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+
+    padding: 30px;
+    border-radius: 15px;
+
+    box-shadow: 0 0 40px rgba(0, 191, 255, 0.3);
+}
+
+/* TITLE */
+h1 {
+    text-align: center;
+    color: #00e5ff;
+    text-shadow: 0 0 12px #00e5ff;
+    margin-bottom: 20px;
+    
+}
+
+/* INPUT FIELDS */
+input {
+    width: 22%;
+    padding: 12px;
+    margin: 8px;
+
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0, 191, 255, 0.4);
+    color: #fff;
+
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #00e5ff;
+    box-shadow: 0 0 10px #00e5ff;
+}
+
+/* BUTTON */
+button {
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #00e5ff, #ffc107);
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00e5ff;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th {
+    background: linear-gradient(45deg, #00e5ff, #ffc107);
+    color: black;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+tr:hover {
+    background: rgba(0, 229, 255, 0.1);
+}
+
+/* ACTION BUTTONS */
+.edit {
+    background: #00e5ff;
+    padding: 6px 12px;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.delete {
+    background: #ff4d4d;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* 🔥 CREDIT TEXT */
+body::after {
+    content: "Designed & Developed by Karpagapriya";
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+
+    font-size: 14px;
+    color: #ffc107;
+
+    opacity: 0.8;
+    letter-spacing: 1px;
+
+    text-shadow: 0 0 8px rgba(255, 193, 7, 0.8);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    input {
+        width: 100%;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    body::after {
+        width: 250px;
+        height: 150px;
+    }
+}
